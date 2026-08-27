@@ -1,6 +1,58 @@
 {
   "properties": [
     {
+      "id": "prop-zayed-1787855925111",
+      "title": {
+        "ar": "الحي11",
+        "en": "District 11"
+      },
+      "description": {
+        "ar": "",
+        "en": ""
+      },
+      "price": 10000,
+      "currency": "EGP",
+      "type": "villa",
+      "status": "for-sale",
+      "location": {
+        "city": {
+          "ar": "مدينة الشيخ زايد",
+          "en": "Sheikh Zayed City"
+        },
+        "district": {
+          "ar": "District 11",
+          "en": "District 11"
+        },
+        "country": {
+          "ar": "مصر",
+          "en": "Egypt"
+        },
+        "address": {
+          "ar": "District 11",
+          "en": "District 11"
+        }
+      },
+      "specs": {
+        "bedrooms": 3,
+        "bathrooms": 4,
+        "area_sqm": 80,
+        "area_sqft": 861,
+        "floors": 3
+      },
+      "amenities": [],
+      "images": [
+        "/uploads/alhuda-_______20_11_10742588_______20250406_201126-1787855925080-445838752.jpg",
+        "/uploads/alhuda-aefb93925a880b7d809da3fdbb70dbac-1787855925081-677642385.jpg"
+      ],
+      "videos": [],
+      "featured": false,
+      "badge": {
+        "ar": "",
+        "en": ""
+      },
+      "created_at": "2026-08-27T18:38:45.111Z"
+    },
+    {
       "id": "prop-zayed-1787852793598",
       "title": {
         "ar": "الحي11",

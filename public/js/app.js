@@ -9,6 +9,7 @@ const state = {
   filteredProperties: [],
   wishlist: JSON.parse(localStorage.getItem('alhuda_wishlist') || '[]'),
   selectedProperty: null,
+  selectedPropertyMedia: [],
   activeGalleryIndex: 0,
   filters: {
     search: '',
@@ -21,6 +22,44 @@ const state = {
     amenity: 'all'
   }
 };
+
+// ==========================================================================
+// Media Helpers (Images & Videos)
+// ==========================================================================
+const VIDEO_FILE_EXTENSIONS = ['.mp4', '.mov', '.webm', '.avi', '.mkv'];
+
+// Detects whether a given media URL is a video based on its file extension
+function isVideoUrl(url) {
+  if (!url || typeof url !== 'string') return false;
+  const clean = url.split('?')[0].split('#')[0].toLowerCase();
+  return VIDEO_FILE_EXTENSIONS.some(ext => clean.endsWith(ext));
+}
+
+// Combines a property's images[] and videos[] into a single ordered media list
+function getPropertyMedia(prop) {
+  const images = Array.isArray(prop?.images) ? prop.images.filter(Boolean) : [];
+  const videos = Array.isArray(prop?.videos) ? prop.videos.filter(Boolean) : [];
+  const combined = [...images, ...videos];
+  return combined.length > 0 ? combined : ['https://images.unsplash.com/photo-1600585154340-be6161a56a0c'];
+}
+
+// Returns the best thumbnail URL for a property card (prefers an actual image over a video)
+function getPropertyThumbnail(prop) {
+  const media = getPropertyMedia(prop);
+  const firstImage = media.find(url => !isVideoUrl(url));
+  return firstImage || media[0];
+}
+
+// Renders either an <img> or <video> into the gallery's main media container
+function renderGalleryMainMedia(url) {
+  const container = document.getElementById('galleryMainMedia');
+  if (!container || !url) return;
+  if (isVideoUrl(url)) {
+    container.innerHTML = `<video src="${url}" style="width:100%;height:100%;object-fit:cover;" controls playsinline preload="metadata"></video>`;
+  } else {
+    container.innerHTML = `<img src="${url}" alt="Property View" style="width:100%;height:100%;object-fit:cover;" />`;
+  }
+}
 
 // ==========================================================================
 // Initialization
@@ -138,12 +177,16 @@ function createPropertyCardHTML(prop) {
     statusLabel = t('status_furnished_rent');
   }
 
-  const mainImage = (prop.images && prop.images[0]) || 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c';
+  const mainMedia = getPropertyThumbnail(prop);
+  const mainIsVideo = isVideoUrl(mainMedia);
 
   return `
     <div class="property-card" data-id="${prop.id}" onclick="openPropertyModal('${prop.id}')" style="cursor: pointer;">
       <div class="card-media-wrapper">
-        <img src="${mainImage}" alt="${title}" class="card-image" loading="lazy" />
+        ${mainIsVideo
+          ? `<video src="${mainMedia}" class="card-image" muted loop playsinline preload="metadata"></video>
+             <div class="card-video-badge"><i class="fas fa-play-circle"></i></div>`
+          : `<img src="${mainMedia}" alt="${title}" class="card-image" loading="lazy" />`}
         <div class="card-media-overlay"></div>
         
         <div class="card-top-badges">
@@ -361,18 +404,24 @@ function updateModalContent(prop) {
   const desc = getPropText(prop.description);
   const district = getPropText(prop.location?.district);
 
-  // Gallery
-  const images = prop.images && prop.images.length > 0 ? prop.images : ['https://images.unsplash.com/photo-1600585154340-be6161a56a0c'];
-  const mainImg = document.getElementById('galleryMainImg');
-  if (mainImg) mainImg.src = images[state.activeGalleryIndex] || images[0];
+  // Gallery (images + videos combined)
+  const media = getPropertyMedia(prop);
+  state.selectedPropertyMedia = media;
+  if (state.activeGalleryIndex >= media.length) state.activeGalleryIndex = 0;
+  renderGalleryMainMedia(media[state.activeGalleryIndex] || media[0]);
 
   const thumbsContainer = document.getElementById('galleryThumbs');
   if (thumbsContainer) {
-    thumbsContainer.innerHTML = images.map((img, idx) => `
+    thumbsContainer.innerHTML = media.map((item, idx) => {
+      const isVid = isVideoUrl(item);
+      return `
       <div class="gallery-thumb ${idx === state.activeGalleryIndex ? 'active' : ''}" onclick="setGalleryImage(${idx})">
-        <img src="${img}" alt="Thumbnail ${idx + 1}" />
+        ${isVid
+          ? `<video src="${item}" muted preload="metadata"></video><div class="gallery-thumb-video-badge"><i class="fas fa-play"></i></div>`
+          : `<img src="${item}" alt="Thumbnail ${idx + 1}" />`}
       </div>
-    `).join('');
+    `;
+    }).join('');
   }
 
   // Text contents
@@ -428,11 +477,10 @@ function updateModalContent(prop) {
 }
 
 function setGalleryImage(index) {
-  if (!state.selectedProperty || !state.selectedProperty.images) return;
+  const media = state.selectedPropertyMedia;
+  if (!media || media.length === 0) return;
   state.activeGalleryIndex = index;
-  const images = state.selectedProperty.images;
-  const mainImg = document.getElementById('galleryMainImg');
-  if (mainImg) mainImg.src = images[index];
+  renderGalleryMainMedia(media[index]);
 
   document.querySelectorAll('.gallery-thumb').forEach((thumb, idx) => {
     thumb.classList.toggle('active', idx === index);
@@ -440,16 +488,16 @@ function setGalleryImage(index) {
 }
 
 function nextGalleryImage() {
-  if (!state.selectedProperty || !state.selectedProperty.images) return;
-  const len = state.selectedProperty.images.length;
-  state.activeGalleryIndex = (state.activeGalleryIndex + 1) % len;
+  const media = state.selectedPropertyMedia;
+  if (!media || media.length === 0) return;
+  state.activeGalleryIndex = (state.activeGalleryIndex + 1) % media.length;
   setGalleryImage(state.activeGalleryIndex);
 }
 
 function prevGalleryImage() {
-  if (!state.selectedProperty || !state.selectedProperty.images) return;
-  const len = state.selectedProperty.images.length;
-  state.activeGalleryIndex = (state.activeGalleryIndex - 1 + len) % len;
+  const media = state.selectedPropertyMedia;
+  if (!media || media.length === 0) return;
+  state.activeGalleryIndex = (state.activeGalleryIndex - 1 + media.length) % media.length;
   setGalleryImage(state.activeGalleryIndex);
 }
 
@@ -625,7 +673,7 @@ function updateWishlistUI() {
 
     return `
       <div class="wishlist-item" onclick="openPropertyModal('${prop.id}')" style="cursor: pointer;">
-        <img src="${prop.images?.[0] || ''}" alt="${getPropText(prop.title)}" class="wishlist-item-img" />
+        <img src="${getPropertyThumbnail(prop)}" alt="${getPropText(prop.title)}" class="wishlist-item-img" />
         <div class="wishlist-item-info">
           <h4 class="wishlist-item-title">${getPropText(prop.title)}</h4>
           <span class="wishlist-item-price">${formatPrice(prop.price)}</span>

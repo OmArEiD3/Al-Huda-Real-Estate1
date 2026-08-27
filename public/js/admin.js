@@ -165,7 +165,10 @@ function renderPropertiesTable() {
   tbody.innerHTML = adminState.properties.map(prop => {
     const title = getPropText(prop.title);
     const district = getPropText(prop.location?.district);
-    const mainImg = prop.images?.[0] || 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c';
+    // Prefer an actual image for the thumbnail; fall back to the first image regardless
+    const mainImg = (prop.images || []).find(url => !/\.(mp4|mov|webm|avi|mkv)(\?.*)?$/i.test(url))
+      || prop.images?.[0]
+      || 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c';
 
     // Status pill
     let statusPill = `<span class="badge-tag badge-sale">${t('status_for_sale')}</span>`;
@@ -454,7 +457,7 @@ function openEditPropertyModal(propId) {
   form.floors.value = String(prop.specs?.floors || '2');
   form.area_sqm.value = prop.specs?.area_sqm || '';
 
-  form.images.value = (prop.images || []).join('\n');
+  form.images.value = [...(prop.images || []), ...(prop.videos || [])].join('\n');
   form.featured.checked = Boolean(prop.featured);
   form.badge_ar.value = prop.badge?.ar || '';
   form.badge_en.value = prop.badge?.en || '';
@@ -493,28 +496,34 @@ async function handleSaveProperty(e) {
     checkedAmenities.push(cb.value);
   });
 
-  // 🔼 Upload pending local files first, then collect all image URLs
-  let allImages = [];
-
+  // 🔼 Upload pending local files first, then collect image/video URLs separately
   if (submitBtn) {
     submitBtn.disabled = true;
     submitBtn.innerHTML = `<i class="fas fa-cloud-upload-alt fa-spin"></i> جاري رفع الملفات...`;
   }
 
-  // Upload local files to server
-  const localUploadedUrls = await uploadPendingFiles();
-  allImages = [...localUploadedUrls];
+  // Upload local files to server (already split into images vs videos by type)
+  const uploaded = await uploadPendingFiles();
+  let allImages = [...uploaded.images];
+  let allVideos = [...uploaded.videos];
 
-  // Also collect any manual URLs from textarea
+  // Also collect any manual URLs from the textarea, splitting by file extension
   const textareaUrls = (form.images.value || '')
     .split('\n')
     .map(url => url.trim())
     .filter(url => url.length > 0);
 
-  allImages = [...allImages, ...textareaUrls];
+  const VIDEO_EXT_REGEX = /\.(mp4|mov|webm|avi|mkv)(\?.*)?$/i;
+  textareaUrls.forEach(url => {
+    if (VIDEO_EXT_REGEX.test(url)) {
+      allVideos.push(url);
+    } else {
+      allImages.push(url);
+    }
+  });
 
   // Fallback placeholder image if no images provided
-  if (allImages.length === 0) {
+  if (allImages.length === 0 && allVideos.length === 0) {
     allImages = ['https://images.unsplash.com/photo-1600585154340-be6161a56a0c'];
   }
 
@@ -539,6 +548,7 @@ async function handleSaveProperty(e) {
     },
     amenities: checkedAmenities,
     images: allImages,
+    videos: allVideos,
     featured: form.featured.checked,
     badge: { ar: form.badge_ar.value, en: form.badge_en.value }
   };
@@ -818,9 +828,11 @@ function removeFilePreview(btn, objectUrl) {
  * Upload all pending local files to the server before saving property
  * Returns array of server-side URLs
  */
+// Returns { images: [...], videos: [...] } separating uploaded server URLs by file type,
+// matching the original File objects (order-preserving, same as multer's req.files order).
 async function uploadPendingFiles() {
   const filesToUpload = pendingLocalFiles.filter(f => f !== null);
-  if (filesToUpload.length === 0) return [];
+  if (filesToUpload.length === 0) return { images: [], videos: [] };
 
   const formData = new FormData();
   filesToUpload.forEach(file => {
@@ -835,15 +847,28 @@ async function uploadPendingFiles() {
     const result = await response.json();
     if (result.success && Array.isArray(result.urls)) {
       showToast(`✅ تم رفع ${result.urls.length} ملف بنجاح`, 'success');
-      return result.urls;
+
+      const images = [];
+      const videos = [];
+      result.urls.forEach((url, idx) => {
+        const originalFile = filesToUpload[idx];
+        const isVideo = (originalFile && originalFile.type && originalFile.type.startsWith('video/'))
+          || /\.(mp4|mov|webm|avi|mkv)$/i.test(url);
+        if (isVideo) {
+          videos.push(url);
+        } else {
+          images.push(url);
+        }
+      });
+      return { images, videos };
     } else {
       showToast(result.message || 'فشل رفع الملفات', 'error');
-      return [];
+      return { images: [], videos: [] };
     }
   } catch (err) {
     console.error('File upload error:', err);
     showToast('خطأ في الاتصال أثناء رفع الملفات', 'error');
-    return [];
+    return { images: [], videos: [] };
   }
 }
 
