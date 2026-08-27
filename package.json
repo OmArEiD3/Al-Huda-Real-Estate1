@@ -1,0 +1,26 @@
+{
+  "name": "al-huda-real-estate",
+  "version": "1.0.0",
+  "description": "Al Huda Real Estate Luxury Web Platform & Admin Dashboard",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [
+    "real-estate",
+    "luxury",
+    "bilingual",
+    "arabic",
+    "english"
+  ],
+  "author": "Al Huda Real Estate",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "morgan": "^1.10.0",
+    "multer": "^2.2.0"
+  }
+}
