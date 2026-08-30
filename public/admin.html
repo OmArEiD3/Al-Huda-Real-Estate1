@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="admin_title">لوحة التحكم | Al Huda Real Estate</title>
+  <meta name="description" content="لوحة تحكم إدارة شركة عقارات الهدى - إدارة عقارات الشيخ زايد، الإيجار المفروش، وطلبات المعاينة." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Cinzel:wght@500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Tajawal:wght@300;400;500;700;800;900&display=swap" />
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+
+  <div class="admin-layout">
+    <!-- ====================================================================
+         Admin Sidebar
+         ==================================================================== -->
+    <aside class="admin-sidebar">
+      <div class="admin-brand">
+        <div class="admin-brand-icon">
+          <i class="fas fa-gem"></i>
+        </div>
+        <div>
+          <div class="admin-brand-title" data-i18n="brand_name">عقارات الهدى</div>
+          <div class="admin-brand-badge" data-i18n="portal_badge">فرع الشيخ زايد VIP</div>
+        </div>
+      </div>
+
+      <!-- Navigation Items -->
+      <nav class="admin-nav">
+        <div class="admin-nav-item active" data-target="viewStats">
+          <i class="fas fa-chart-line"></i>
+          <span data-i18n="admin_tab_stats">نظرة عامة وإحصائيات</span>
+        </div>
+
+        <div class="admin-nav-item" data-target="viewProperties">
+          <i class="fas fa-building"></i>
+          <span data-i18n="admin_tab_properties">إدارة عقارات زايد</span>
+        </div>
+
+        <div class="admin-nav-item" data-target="viewViewings">
+          <i class="fas fa-calendar-check"></i>
+          <span data-i18n="admin_tab_viewings">طلبات المعاينة</span>
+          <span id="viewingsNavBadge" class="admin-nav-badge" style="display:none;">0</span>
+        </div>
+
+        <div class="admin-nav-item" data-target="viewInquiries">
+          <i class="fas fa-envelope-open-text"></i>
+          <span data-i18n="admin_tab_inquiries">الاستفسارات والرسائل</span>
+          <span id="inquiriesNavBadge" class="admin-nav-badge" style="display:none;">0</span>
+        </div>
+
+        <div class="admin-nav-item" data-target="viewSettings">
+          <i class="fas fa-database"></i>
+          <span data-i18n="admin_tab_settings">أدوات النظام والنسخ</span>
+        </div>
+      </nav>
+
+      <!-- Sidebar Footer -->
+      <div class="sidebar-footer">
+        <a href="index.html" class="btn-back-site">
+          <i class="fas fa-external-link-alt"></i>
+          <span data-i18n="admin_back_to_site">العودة للموقع الرئيسي</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- ====================================================================
+         Admin Main Content
+         ==================================================================== -->
+    <main class="admin-main">
+      <!-- Top Bar -->
+      <header class="admin-topbar">
+        <div class="admin-topbar-title">
+          <h2 data-i18n="admin_title">لوحة تحكم عقارات الهدى - الشيخ زايد</h2>
+          <p data-i18n="admin_subtitle">إدارة العقارات، الإيجار المفروش، وطلبات المعاينة</p>
+        </div>
+
+        <div class="admin-topbar-actions">
+          <!-- Language Switcher in Admin -->
+          <div class="switcher-group">
+            <button class="switcher-btn lang-btn active" data-lang="ar" onclick="setLanguage('ar')">العربية</button>
+            <button class="switcher-btn lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+          </div>
+
+          <button class="btn-luxury" style="padding: 0.65rem 1.4rem; font-size: 0.85rem;" onclick="openAddPropertyModal()">
+            <i class="fas fa-plus"></i>
+            <span data-i18n="admin_add_property">+ إضافة عقار بالشيخ زايد</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Content Body Container -->
+      <div class="admin-content-body">
+
+        <!-- ================================================================
+             View 1: Stats & Executive Overview
+             ================================================================ -->
+        <section id="viewStats" class="admin-view-section active">
+          <!-- KPI Stats Grid -->
+          <div class="stats-cards-grid">
+            <div class="stat-kpi-card">
+              <div class="kpi-icon"><i class="fas fa-city"></i></div>
+              <div class="kpi-info">
+                <div id="kpiTotalProps" class="kpi-value">0</div>
+                <div class="kpi-label" data-i18n="admin_stat_total_props">عقار بالشيخ زايد</div>
+              </div>
+            </div>
+
+            <div class="stat-kpi-card">
+              <div class="kpi-icon"><i class="fas fa-coins"></i></div>
+              <div class="kpi-info">
+                <div id="kpiTotalValue" class="kpi-value" style="font-size: 1.4rem;">0 ج.م</div>
+                <div class="kpi-label" data-i18n="admin_stat_total_val">إجمالي قيمة المحفظة</div>
+              </div>
+            </div>
+
+            <div class="stat-kpi-card">
+              <div class="kpi-icon"><i class="fas fa-calendar-alt"></i></div>
+              <div class="kpi-info">
+                <div id="kpiTotalViewings" class="kpi-value">0</div>
+                <div class="kpi-label" data-i18n="admin_stat_total_viewings">إجمالي طلبات المعاينة</div>
+              </div>
+            </div>
+
+            <div class="stat-kpi-card">
+              <div class="kpi-icon" style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; border-color: rgba(245, 158, 11, 0.3);">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="kpi-info">
+                <div id="kpiPendingViewings" class="kpi-value">0</div>
+                <div class="kpi-label" data-i18n="admin_stat_pending_viewings">طلبات معاينة قيد الانتظار</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Detailed Breakdown Panels -->
+          <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 2rem;">
+            <div class="admin-card-panel">
+              <div class="panel-header">
+                <h3 class="panel-title">
+                  <i class="fas fa-chart-pie" style="color: var(--admin-gold);"></i>
+                  <span data-i18n="admin_breakdown_title">توزيع العقارات حسب الفئة</span>
+                </h3>
+              </div>
+              <div id="typeBreakdownList">
+                <!-- Injected via JS -->
+              </div>
+            </div>
+
+            <div class="admin-card-panel">
+              <div class="panel-header">
+                <h3 class="panel-title">
+                  <i class="fas fa-bolt" style="color: var(--admin-gold);"></i>
+                  <span data-i18n="admin_actions_title">إجراءات سريعة</span>
+                </h3>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 1rem;">
+                <button class="btn-luxury" style="width: 100%; justify-content: flex-start;" onclick="openAddPropertyModal()">
+                  <i class="fas fa-plus-circle"></i>
+                  <span data-i18n="admin_action_add">إضافة عقار جديد بالشيخ زايد</span>
+                </button>
+                <button class="btn-outline-gold" style="width: 100%; justify-content: flex-start;" onclick="document.querySelector('[data-target=\'viewViewings\']').click()">
+                  <i class="fas fa-eye"></i>
+                  <span data-i18n="admin_action_viewings">مراجعة طلبات المعاينة الواردة</span>
+                </button>
+                <button class="btn-outline-gold" style="width: 100%; justify-content: flex-start;" onclick="exportDatabaseJSON()">
+                  <i class="fas fa-download"></i>
+                  <span data-i18n="admin_action_export">تصدير نسخة احتياطية من البيانات</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             View 2: Properties Management (CRUD)
+             ================================================================ -->
+        <section id="viewProperties" class="admin-view-section">
+          <div class="admin-card-panel">
+            <div class="panel-header">
+              <h3 class="panel-title">
+                <i class="fas fa-building" style="color: var(--admin-gold);"></i>
+                <span data-i18n="admin_tab_properties">إدارة عقارات الشيخ زايد</span>
+              </h3>
+              <button class="btn-luxury" style="padding: 0.5rem 1.2rem; font-size: 0.82rem;" onclick="openAddPropertyModal()">
+                <i class="fas fa-plus"></i> <span data-i18n="admin_add_property">+ إضافة عقار</span>
+              </button>
+            </div>
+
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th data-i18n="admin_th_property">العقار</th>
+                    <th data-i18n="admin_th_price">السعر (ج.م)</th>
+                    <th data-i18n="admin_th_type">النوع</th>
+                    <th data-i18n="admin_th_compound">الكمبوند / المنطقة</th>
+                    <th data-i18n="admin_th_status">الحالة / الغرض</th>
+                    <th data-i18n="admin_th_featured">مميز</th>
+                    <th data-i18n="admin_th_actions">الإجراءات</th>
+                  </tr>
+                </thead>
+                <tbody id="propertiesTableBody">
+                  <!-- Injected via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             View 3: Viewing Bookings Manager (طلبات المعاينة)
+             ================================================================ -->
+        <section id="viewViewings" class="admin-view-section">
+          <div class="admin-card-panel">
+            <div class="panel-header">
+              <h3 class="panel-title">
+                <i class="fas fa-calendar-check" style="color: var(--admin-gold);"></i>
+                <span data-i18n="admin_tab_viewings">طلبات المعاينة الواردة من العملاء</span>
+              </h3>
+            </div>
+
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th data-i18n="admin_th_client">بيانات العميل</th>
+                    <th data-i18n="admin_th_prop_req">العقار المطلوب بالشيخ زايد</th>
+                    <th data-i18n="admin_th_date">الموعد المفضل</th>
+                    <th data-i18n="admin_th_mode">نوع الجولة</th>
+                    <th data-i18n="admin_th_status">الحالة</th>
+                    <th data-i18n="admin_th_notes">ملاحظات العميل</th>
+                    <th data-i18n="admin_th_actions">الإجراءات</th>
+                  </tr>
+                </thead>
+                <tbody id="viewingsTableBody">
+                  <!-- Injected via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             View 4: Client Inquiries
+             ================================================================ -->
+        <section id="viewInquiries" class="admin-view-section">
+          <div class="admin-card-panel">
+            <div class="panel-header">
+              <h3 class="panel-title">
+                <i class="fas fa-envelope-open-text" style="color: var(--admin-gold);"></i>
+                <span data-i18n="admin_tab_inquiries">رسائل واستفسارات العملاء</span>
+              </h3>
+            </div>
+
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th data-i18n="admin_th_sender">المرسل</th>
+                    <th data-i18n="admin_th_subject">الموضوع</th>
+                    <th data-i18n="admin_th_message">نص الرسالة</th>
+                    <th data-i18n="admin_th_status">الحالة</th>
+                    <th data-i18n="admin_th_date">التاريخ</th>
+                    <th data-i18n="admin_th_actions">الإجراءات</th>
+                  </tr>
+                </thead>
+                <tbody id="inquiriesTableBody">
+                  <!-- Injected via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             View 5: Database Tools & Backups
+             ================================================================ -->
+        <section id="viewSettings" class="admin-view-section">
+          <div class="admin-card-panel" style="max-width: 800px;">
+            <div class="panel-header">
+              <h3 class="panel-title">
+                <i class="fas fa-database" style="color: var(--admin-gold);"></i>
+                <span data-i18n="admin_tab_settings">أدوات قاعدة البيانات والنسخ الاحتياطي</span>
+              </h3>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 2rem;">
+              <div style="background: rgba(10, 12, 16, 0.5); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.06);">
+                <h4 style="color: #fff; margin-bottom: 0.5rem;">
+                  <i class="fas fa-file-export" style="color: var(--admin-gold);"></i> 
+                  <span data-i18n="admin_backup_title">تصدير البيانات (JSON)</span>
+                </h4>
+                <p style="color: var(--text-dim); font-size: 0.88rem; margin-bottom: 1rem;" data-i18n="admin_backup_desc">
+                  قم بتحميل ملف JSON يحتوي على كامل عقارات الشيخ زايد، طلبات المعاينة، والاستفسارات لحفظها كنسخة احتياطية.
+                </p>
+                <button class="btn-luxury" onclick="exportDatabaseJSON()">
+                  <i class="fas fa-download"></i> <span data-i18n="admin_backup_btn">تحميل النسخة الاحتياطية</span>
+                </button>
+              </div>
+
+              <div style="background: rgba(239, 68, 68, 0.05); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(239, 68, 68, 0.2);">
+                <h4 style="color: #f87171; margin-bottom: 0.5rem;">
+                  <i class="fas fa-history"></i> 
+                  <span data-i18n="admin_restore_title">استعادة البيانات الافتراضية</span>
+                </h4>
+                <p style="color: var(--text-dim); font-size: 0.88rem; margin-bottom: 1rem;" data-i18n="admin_restore_desc">
+                  إعادة ضبط قاعدة البيانات إلى عقارات الشيخ زايد النموذجية.
+                </p>
+                <button class="btn-outline-gold" style="border-color: #ef4444; color: #f87171;" onclick="resetSampleDatabase()">
+                  <i class="fas fa-trash-restore"></i> <span data-i18n="admin_restore_btn">استعادة البيانات الافتراضية</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- ====================================================================
+       Add / Edit Property Modal (With Local File Upload & Updated Amenities)
+       ==================================================================== -->
+  <div id="propertyAdminModal" class="admin-modal-backdrop">
+    <div class="admin-modal-box">
+      <div class="modal-header-row">
+        <h3 id="propModalTitle" style="font-size: 1.3rem; font-weight: 700; color: var(--admin-gold-light);" data-i18n="admin_add_property">
+          + إضافة عقار جديد بالشيخ زايد
+        </h3>
+        <button class="modal-close-btn" style="position: static;" onclick="closeAdminModals()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <form id="propertyAdminForm">
+        <!-- Titles (AR & EN) -->
+        <div class="form-grid-2">
+          <div class="admin-form-group">
+            <label class="admin-form-label" data-i18n="admin_lbl_title_ar">عنوان العقار بالعربية *</label>
+            <input type="text" name="title_ar" class="admin-input" placeholder="مثال: فيلا مستقلة فاخرة كمبوند أليجريا" required />
+          </div>
+          <div class="admin-form-group">
+            <label class="admin-form-label" data-i18n="admin_lbl_title_en">Property Title (English) *</label>
+            <input type="text" name="title_en" class="admin-input" placeholder="e.g. Signature Standalone Villa - Allegria Golf" required />
+          </div>
+        </div>
+
+        <!-- Descriptions (AR & EN) -->
+        <div class="form-grid-2">
+          <div class="admin-form-group">
+            <label class="admin-form-label" data-i18n="admin_lbl_desc_ar">الوصف الكامل بالعربية</label>
+            <textarea name="desc_ar" class="admin-textarea" placeholder="تفاصيل ومميزات العقار بالشيخ زايد..."></textarea>
+          </div>
+          <div class="admin-form-group">
+            <label class="admin-form-label" data-i18n="admin_lbl_desc_en">Full Description (English)</label>
+            <textarea name="desc_en" class="admin-textarea" placeholder="Luxury property features & highlights in Sheikh Zayed..."></textarea>
+          </div>
+        </div>
+
+        <!-- Price, Type, Status -->
+        <div class="form-grid-3">
+          <div class="admin-form-group">
+            <label class="admin-form-label" data-i18n="admin_lbl_price">السعر بالجنيه المصري (ج.م) *</label>
+            <input type="number" name="price" class="admin-input" placeholder="25000000" required />
+          </div>
+          <div class="admin-form-group">
+            <label class="admin-form-label" data-i18n="admin_lbl_type">نوع العقار</label>
+            <select name="type" class="admin-select">
+              <option value="villa" data-i18n="filter_type_villa">فيلا مستقلة</option>
+              <option value="townhouse" data-i18n="filter_type_townhouse">تاون هاوس / توين</option>
+              <option value="mansion" data-i18n="filter_type_mansion">قصور ملكية</option>
+              <option value="penthouse" data-i18n="filter_type_penthouse">بنتهاوس</option>
+              <option value="apartment" data-i18n="filter_type_apartment">شقة فاخرة</option>
+              <option value="duplex" data-i18n="filter_type_duplex">دوبلكس بحديقة</option>
+              <option value="commercial" data-i18n="filter_type_commercial">مقر تجاري / إداري</option>
+            </select>
+          </div>
+          <div class="admin-form-group">
+            <label class="admin-form-label" data-i18n="admin_lbl_status">حالة العقار / الغرض *</label>
+            <select name="status" class="admin-select">
+              <option value="for-sale" data-i18n="status_for_sale">للبيع</option>
+              <option value="for-rent" data-i18n="status_for_rent">إيجار عادي</option>
+              <option value="furnished-rent" data-i18n="status_furnished_rent">إيجار مفروش فاخر</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- District / Compound & Address in Sheikh Zayed -->
+        <div class="form-grid-2">
+          <div class="admin-form-group">
+            <label class="admin-form-label" data-i18n="admin_lbl_district_ar">الكمبوند / الحي (عربي) *</label>
+            <input type="text" name="district_ar" class="admin-input" placeholder="مثال: كمبوند أليجريا أو بيفرلي هيلز" required />
+          </div>
+          <div class="admin-form-group">
+            <label class="admin-form-label" data-i18n="admin_lbl_district_en">Compound / District (English) *</label>
+            <input type="text" name="district_en" class="admin-input" placeholder="e.g. Allegria or Beverly Hills" required />
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="admin-form-group">
+            <label class="admin-form-label" data-i18n="admin_lbl_address_ar">العنوان التفصيلي بالشيخ زايد (عربي)</label>
+            <input type="text" name="address_ar" class="admin-input" placeholder="طريق وصلة دهشور، الشيخ زايد" />
+          </div>
+          <div class="admin-form-group">
+            <label class="admin-form-label" data-i18n="admin_lbl_address_en">Address in Sheikh Zayed (English)</label>
+            <input type="text" name="address_en" class="admin-input" placeholder="Dahshur Link, Sheikh Zayed" />
+          </div>
+        </div>
+
+        <!-- Specs Grid: Bedrooms (Dropdown), Bathrooms (Dropdown), Floors (Dropdown), Area (m²) -->
+        <div class="form-grid-2" style="background: rgba(10, 12, 16, 0.4); padding: 1.25rem; border-radius: 14px; border: 1px solid rgba(212, 175, 55, 0.15);">
+          <!-- Bedrooms Dropdown -->
+          <div class="admin-form-group">
+            <label class="admin-form-label"><i class="fas fa-bed" style="color: var(--admin-gold);"></i> <span data-i18n="admin_lbl_bedrooms">غرف النوم (Dropdown)</span></label>
+            <select name="bedrooms" class="admin-select">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3" selected>3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10+</option>
+            </select>
+          </div>
+
+          <!-- Bathrooms Dropdown -->
+          <div class="admin-form-group">
+            <label class="admin-form-label"><i class="fas fa-bath" style="color: var(--admin-gold);"></i> <span data-i18n="admin_lbl_bathrooms">دورات المياه / الحمامات (Dropdown)</span></label>
+            <select name="bathrooms" class="admin-select">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4" selected>4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10+</option>
+            </select>
+          </div>
+
+          <!-- Floors Dropdown -->
+          <div class="admin-form-group">
+            <label class="admin-form-label"><i class="fas fa-layer-group" style="color: var(--admin-gold);"></i> <span data-i18n="admin_lbl_floors">عدد الطوابق (Dropdown)</span></label>
+            <select name="floors" class="admin-select">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3" selected>3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+
+          <!-- Area in sqm -->
+          <div class="admin-form-group">
+            <label class="admin-form-label"><i class="fas fa-vector-square" style="color: var(--admin-gold);"></i> <span data-i18n="admin_lbl_area">المساحة الإجمالية (م²)</span></label>
+            <input type="number" name="area_sqm" class="admin-input" placeholder="450" required />
+          </div>
+        </div>
+
+        <!-- ==============================================================
+             Updated Amenities Selection (8 Clean Amenities)
+             ============================================================== -->
+        <div class="admin-form-group" style="margin-top: 1.25rem; margin-bottom: 1.25rem;">
+          <label class="admin-form-label" data-i18n="admin_lbl_amenities">المزايا والمرافق الخاصة</label>
+          <div class="amenities-checkbox-grid">
+            <label class="amenity-check-label"><input type="checkbox" name="amenities" value="private_pool" /> <span data-i18n="amenity_private_pool">حمام سباحة خاص</span></label>
+            <label class="amenity-check-label"><input type="checkbox" name="amenities" value="private_garden" /> <span data-i18n="amenity_private_garden">حديقة خاصة منسقة</span></label>
+            <label class="amenity-check-label"><input type="checkbox" name="amenities" value="security_24_7" /> <span data-i18n="amenity_security_24_7">أمن وحراسة 24/7</span></label>
+            <label class="amenity-check-label"><input type="checkbox" name="amenities" value="smart_home" /> <span data-i18n="amenity_smart_home">نظام ذكي متكامل</span></label>
+            <label class="amenity-check-label"><input type="checkbox" name="amenities" value="super_lux" /> <span data-i18n="amenity_super_lux">تشطيب فاخر / سوبر لوكس</span></label>
+            <label class="amenity-check-label"><input type="checkbox" name="amenities" value="central_ac" /> <span data-i18n="amenity_central_ac">تكييف مركزي بالكامل</span></label>
+            <label class="amenity-check-label"><input type="checkbox" name="amenities" value="fitted_kitchen" /> <span data-i18n="amenity_fitted_kitchen">مطبخ مجهز بأحدث الأجهزة</span></label>
+            <label class="amenity-check-label"><input type="checkbox" name="amenities" value="private_garage" /> <span data-i18n="amenity_private_garage">موقف سيارات خاص / كراج</span></label>
+          </div>
+        </div>
+
+        <!-- ==============================================================
+             ✨ Local File Upload (Images & Videos) + URL Support
+             ============================================================== -->
+        <div class="admin-form-group" style="margin-bottom: 1.5rem;">
+          <label class="admin-form-label" data-i18n="admin_upload_heading">رفع الصور والفيديوهات من جهازك</label>
+          
+          <!-- Drag & Drop Zone -->
+          <div id="mediaDropzone" class="media-upload-dropzone" onclick="document.getElementById('mediaFileInput').click()">
+            <input type="file" id="mediaFileInput" multiple accept="image/*,video/*" style="display: none;" onchange="handleLocalFilesSelected(this.files)" />
+            <div class="dropzone-content">
+              <div class="dropzone-icon">
+                <i class="fas fa-cloud-upload-alt"></i>
+              </div>
+              <h4 style="font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 0.35rem;" data-i18n="admin_upload_heading">
+                رفع الصور والفيديوهات من جهازك
+              </h4>
+              <p style="font-size: 0.85rem; color: var(--text-dim); max-width: 480px; margin: 0 auto 0.85rem;" data-i18n="admin_upload_subheading">
+                اسحب وأفلت الملفات هنا أو اضغط للاختيار من الكمبيوتر (يدعم الصور والفيديوهات)
+              </p>
+              <button type="button" class="btn-luxury" style="padding: 0.5rem 1.25rem; font-size: 0.82rem; pointer-events: none;" data-i18n="admin_upload_btn_text">
+                <i class="fas fa-folder-open"></i> اختيار ملفات من الجهاز
+              </button>
+            </div>
+          </div>
+
+          <!-- Media Previews Grid -->
+          <div id="mediaPreviewGrid" class="media-previews-container" style="display: none;">
+            <!-- Previews injected via JS -->
+          </div>
+
+          <!-- Optional External URLs Input -->
+          <div style="margin-top: 1rem;">
+            <label class="admin-form-label" style="font-size: 0.8rem; color: var(--text-dim);" data-i18n="admin_upload_url_label">
+              أو روابط صور وفيديوهات إضافية (رابط واحد في كل سطر)
+            </label>
+            <textarea name="images" id="propImagesTextarea" class="admin-textarea" style="min-height: 70px; font-size: 0.85rem;" placeholder="https://images.unsplash.com/...&#10;https://example.com/tour.mp4"></textarea>
+          </div>
+        </div>
+
+        <!-- Featured & Badges -->
+        <div class="form-grid-3" style="align-items: center;">
+          <div class="admin-form-group">
+            <label class="amenity-check-label" style="font-weight: 700; color: var(--admin-gold-light);">
+              <input type="checkbox" name="featured" /> <span data-i18n="admin_lbl_featured">عقار مميز بالشيخ زايد (Featured)</span>
+            </label>
+          </div>
+          <div class="admin-form-group">
+            <label class="admin-form-label" data-i18n="admin_lbl_badge_ar">شارة التميز (عربي)</label>
+            <input type="text" name="badge_ar" class="admin-input" placeholder="فيلا مميزة بأليجريا" />
+          </div>
+          <div class="admin-form-group">
+            <label class="admin-form-label" data-i18n="admin_lbl_badge_en">Badge (English)</label>
+            <input type="text" name="badge_en" class="admin-input" placeholder="Featured Allegria Villa" />
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div style="margin-top: 2rem; display: flex; justify-content: flex-end; gap: 1rem;">
+          <button type="button" class="btn-outline-gold" onclick="closeAdminModals()" data-i18n="btn_cancel">إلغاء</button>
+          <button type="submit" class="btn-luxury" style="padding: 0.85rem 2rem;">
+            <i class="fas fa-save"></i> <span data-i18n="btn_save_property">حفظ العقار</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/i18n.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

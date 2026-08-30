@@ -1,0 +1,735 @@
+{
+  "properties": [
+    {
+      "id": "prop-zayed-1787855925111",
+      "title": {
+        "ar": "الحي11",
+        "en": "District 11"
+      },
+      "description": {
+        "ar": "",
+        "en": ""
+      },
+      "price": 10000,
+      "currency": "EGP",
+      "type": "villa",
+      "status": "for-sale",
+      "location": {
+        "city": {
+          "ar": "مدينة الشيخ زايد",
+          "en": "Sheikh Zayed City"
+        },
+        "district": {
+          "ar": "District 11",
+          "en": "District 11"
+        },
+        "country": {
+          "ar": "مصر",
+          "en": "Egypt"
+        },
+        "address": {
+          "ar": "District 11",
+          "en": "District 11"
+        }
+      },
+      "specs": {
+        "bedrooms": 3,
+        "bathrooms": 4,
+        "area_sqm": 80,
+        "area_sqft": 861,
+        "floors": 3
+      },
+      "amenities": [],
+      "images": [
+        "/uploads/alhuda-_______20_11_10742588_______20250406_201126-1787855925080-445838752.jpg",
+        "/uploads/alhuda-aefb93925a880b7d809da3fdbb70dbac-1787855925081-677642385.jpg"
+      ],
+      "videos": [],
+      "featured": false,
+      "badge": {
+        "ar": "",
+        "en": ""
+      },
+      "created_at": "2026-08-27T18:38:45.111Z"
+    },
+    {
+      "id": "prop-zayed-1787852793598",
+      "title": {
+        "ar": "الحي11",
+        "en": "District 11"
+      },
+      "description": {
+        "ar": "مجاوره اولي",
+        "en": ""
+      },
+      "type": "apartment",
+      "status": "for-sale",
+      "price": 1000,
+      "currency": "EGP",
+      "location": {
+        "city": {
+          "ar": "مدينة الشيخ زايد",
+          "en": "Sheikh Zayed City"
+        },
+        "district": {
+          "ar": "District 11",
+          "en": "District 11"
+        },
+        "country": {
+          "ar": "مصر",
+          "en": "Egypt"
+        },
+        "address": {
+          "ar": "District 11",
+          "en": "District 11"
+        }
+      },
+      "specs": {
+        "bedrooms": 3,
+        "bathrooms": 1,
+        "area_sqm": 70,
+        "area_sqft": 753,
+        "floors": 3
+      },
+      "amenities": [
+        "private_garden",
+        "fitted_kitchen"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
+      ],
+      "featured": false,
+      "badge": {
+        "ar": "عرض مميز",
+        "en": "Special Offer"
+      },
+      "created_at": "2026-08-27T17:46:33.598Z",
+      "updated_at": "2026-08-27T17:50:29.296Z"
+    },
+    {
+      "id": "prop-zayed-1787849450428",
+      "title": {
+        "ar": "فيلا تاون هاوس مفروشة بالكامل - كمبوند ويست تاون سوديك",
+        "en": "Designer Furnished Townhouse - Westown Sodic Zayed"
+      },
+      "description": {
+        "ar": "تاون هاوس مفروش بالكامل بأرقى الديكورات في ويست تاون سوديك الشيخ زايد.",
+        "en": "Fully furnished modern townhouse in Westown Sodic Sheikh Zayed."
+      },
+      "type": "townhouse",
+      "status": "furnished-rent",
+      "price": 85000,
+      "currency": "EGP",
+      "location": {
+        "city": {
+          "ar": "مدينة الشيخ زايد",
+          "en": "Sheikh Zayed City"
+        },
+        "district": {
+          "ar": "ويست تاون سوديك",
+          "en": "Westown Sodic"
+        },
+        "country": {
+          "ar": "مصر",
+          "en": "Egypt"
+        },
+        "address": {
+          "ar": "",
+          "en": ""
+        }
+      },
+      "specs": {
+        "bedrooms": 3,
+        "bathrooms": 4,
+        "area_sqm": 290,
+        "area_sqft": 3122,
+        "floors": 2
+      },
+      "amenities": [
+        "smart_home",
+        "private_garden",
+        "clubhouse",
+        "security_24_7"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=85"
+      ],
+      "featured": true,
+      "badge": {
+        "ar": "مفروش سوبر لوكس",
+        "en": "Super Lux Furnished"
+      },
+      "created_at": "2026-08-27T16:50:50.428Z"
+    },
+    {
+      "id": "prop-zayed-1787848840498",
+      "title": {
+        "ar": "فيلا تاون هاوس مفروشة بالكامل - كمبوند ويست تاون سوديك",
+        "en": "Designer Furnished Townhouse - Westown Sodic Zayed"
+      },
+      "description": {
+        "ar": "تاون هاوس مفروش بالكامل بأرقى الديكورات في ويست تاون سوديك الشيخ زايد.",
+        "en": "Fully furnished modern townhouse in Westown Sodic Sheikh Zayed."
+      },
+      "type": "townhouse",
+      "status": "furnished-rent",
+      "price": 85000,
+      "currency": "EGP",
+      "location": {
+        "city": {
+          "ar": "مدينة الشيخ زايد",
+          "en": "Sheikh Zayed City"
+        },
+        "district": {
+          "ar": "ويست تاون سوديك",
+          "en": "Westown Sodic"
+        },
+        "country": {
+          "ar": "مصر",
+          "en": "Egypt"
+        },
+        "address": {
+          "ar": "",
+          "en": ""
+        }
+      },
+      "specs": {
+        "bedrooms": 3,
+        "bathrooms": 4,
+        "area_sqm": 290,
+        "area_sqft": 3122,
+        "floors": 2
+      },
+      "amenities": [
+        "smart_home",
+        "private_garden",
+        "clubhouse",
+        "security_24_7"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=85"
+      ],
+      "featured": true,
+      "badge": {
+        "ar": "مفروش سوبر لوكس",
+        "en": "Super Lux Furnished"
+      },
+      "created_at": "2026-08-27T16:40:40.498Z"
+    },
+    {
+      "id": "prop-zayed-101",
+      "title": {
+        "ar": "فيلا مستقلة فاخرة - كمبوند أليجريا الشيخ زايد",
+        "en": "Signature Standalone Villa - Allegria Golf Sheikh Zayed"
+      },
+      "description": {
+        "ar": "فيلا معمارية استثنائية تقع مباشرة على ملاعب الجولف العالمية جريج نورمان في كمبوند أليجريا الراقي بالشيخ زايد. تتميز بحمام سباحة إنفينيتي خاص، حديقة شاسعة منسقة، تشطيبات ألترا سوبر لوكس، ونظام تحكم ذكي بالكامل.",
+        "en": "An extraordinary architectural villa directly overlooking the signature Greg Norman championship golf course in Allegria, Sheikh Zayed. Features a private infinity pool, sprawling landscaped gardens, ultra-luxury finishes, and full smart home automation."
+      },
+      "type": "villa",
+      "status": "for-sale",
+      "price": 48000000,
+      "currency": "EGP",
+      "location": {
+        "city": {
+          "ar": "مدينة الشيخ زايد",
+          "en": "Sheikh Zayed City"
+        },
+        "district": {
+          "ar": "كمبوند أليجريا (Allegria)",
+          "en": "Allegria Golf Compound"
+        },
+        "country": {
+          "ar": "مصر",
+          "en": "Egypt"
+        },
+        "address": {
+          "ar": "كمبوند أليجريا سوديك، الشيخ زايد",
+          "en": "Allegria Sodic, Sheikh Zayed"
+        }
+      },
+      "specs": {
+        "bedrooms": 6,
+        "bathrooms": 7,
+        "area_sqm": 850,
+        "area_sqft": 9149,
+        "floors": 3
+      },
+      "amenities": [
+        "private_pool",
+        "golf_view",
+        "smart_home",
+        "private_garden",
+        "private_elevator",
+        "security_24_7",
+        "clubhouse",
+        "driver_room"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=85"
+      ],
+      "featured": true,
+      "badge": {
+        "ar": "إطلالة مباشرة على الجولف",
+        "en": "Prime Golf View"
+      },
+      "created_at": "2026-02-15T10:00:00Z"
+    },
+    {
+      "id": "prop-zayed-102",
+      "title": {
+        "ar": "فيلا مودرن مفروشة بالكامل - كمبوند بيفرلي هيلز",
+        "en": "Designer Furnished Modern Villa - Beverly Hills Zayed"
+      },
+      "description": {
+        "ar": "فيلا مفروشة بالكامل بأرقى قطع الأثاث الإيطالي المستورد والأجهزة الكهربائية الحديثة في كمبوند بيفرلي هيلز بالشيخ زايد. جاهزة للسكن الفوري، تضم حديقة خاصة مع جلسة شواء خارجية وحمام سباحة دافئ.",
+        "en": "Turnkey fully furnished modern villa with imported designer Italian furniture and high-end appliances in Beverly Hills, Sheikh Zayed. Ready for immediate move-in, featuring heated pool, BBQ lounge, and landscaped private garden."
+      },
+      "type": "villa",
+      "status": "furnished-rent",
+      "price": 185000,
+      "currency": "EGP",
+      "location": {
+        "city": {
+          "ar": "مدينة الشيخ زايد",
+          "en": "Sheikh Zayed City"
+        },
+        "district": {
+          "ar": "بيفرلي هيلز (Beverly Hills)",
+          "en": "Beverly Hills Zayed"
+        },
+        "country": {
+          "ar": "مصر",
+          "en": "Egypt"
+        },
+        "address": {
+          "ar": "مجاورة 4، بيفرلي هيلز، الشيخ زايد",
+          "en": "Zone 4, Beverly Hills, Sheikh Zayed"
+        }
+      },
+      "specs": {
+        "bedrooms": 5,
+        "bathrooms": 6,
+        "area_sqm": 600,
+        "area_sqft": 6458,
+        "floors": 3
+      },
+      "amenities": [
+        "private_pool",
+        "smart_home",
+        "private_garden",
+        "security_24_7",
+        "clubhouse",
+        "driver_room"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1600585152220-90363fe7e115?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1600&q=85"
+      ],
+      "featured": true,
+      "badge": {
+        "ar": "مفروش بالكامل VIP",
+        "en": "Fully Furnished VIP"
+      },
+      "created_at": "2026-02-18T14:30:00Z"
+    },
+    {
+      "id": "prop-zayed-103",
+      "title": {
+        "ar": "بنتهاوس فاخر مع رووف وجاكوزي - أبراج زد الشيخ زايد",
+        "en": "Sky Penthouse with Private Roof - Zed Towers Zayed"
+      },
+      "description": {
+        "ar": "بنتهاوس دوبلكس استثنائي في أعلى طوابق أبراج زد (Zed Towers) الشيخ زايد بإطلالة بانورامية ساحرة على الحديقة المركزية (Zed Park). تشطيبات عالمية راقية مع تراس علوي وجاكوزي ومصاعد خاصة مباشرة.",
+        "en": "An iconic sky penthouse atop Zed Towers Sheikh Zayed with 360 panoramic views of Zed Central Park. Features expansive sky terrace, private jacuzzi, smart automation, and private elevator access."
+      },
+      "type": "penthouse",
+      "status": "for-sale",
+      "price": 31500000,
+      "currency": "EGP",
+      "location": {
+        "city": {
+          "ar": "مدينة الشيخ زايد",
+          "en": "Sheikh Zayed City"
+        },
+        "district": {
+          "ar": "أبراج زد (Zed Towers)",
+          "en": "Zed Towers"
+        },
+        "country": {
+          "ar": "مصر",
+          "en": "Egypt"
+        },
+        "address": {
+          "ar": "أبراج زد بارك، الشيخ زايد",
+          "en": "Zed Park Towers, Sheikh Zayed"
+        }
+      },
+      "specs": {
+        "bedrooms": 4,
+        "bathrooms": 5,
+        "area_sqm": 420,
+        "area_sqft": 4520,
+        "floors": 2
+      },
+      "amenities": [
+        "sky_terrace",
+        "city_view",
+        "smart_home",
+        "private_elevator",
+        "concierge_service",
+        "spa_gym",
+        "security_24_7"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1600573472550-8090b5e0745e?auto=format&fit=crop&w=1600&q=85"
+      ],
+      "featured": true,
+      "badge": {
+        "ar": "إطلالة على زد بارك",
+        "en": "Zed Park View"
+      },
+      "created_at": "2026-02-20T09:15:00Z"
+    },
+    {
+      "id": "prop-zayed-104",
+      "title": {
+        "ar": "تاون هاوس مودرن كورنر للإيجار - كمبوند ويست تاون سوديك",
+        "en": "Modern Corner Townhouse - Westown Sodic Zayed"
+      },
+      "description": {
+        "ar": "تاون هاوس كورنر مميز في ويست تاون سوديك بالشيخ زايد. موقع هادئ بالقرب من منطقة المطاعم والخدمات، يتمتع بحديقة خاصة رحبة ومطبخ مجهز وتكييفات مركزية في جميع الغرف.",
+        "en": "Prime corner townhouse in Westown Sodic, Sheikh Zayed. Prime location near amenities and dining hub, featuring spacious private corner garden, fitted kitchen, and central AC throughout."
+      },
+      "type": "townhouse",
+      "status": "for-rent",
+      "price": 70000,
+      "currency": "EGP",
+      "location": {
+        "city": {
+          "ar": "مدينة الشيخ زايد",
+          "en": "Sheikh Zayed City"
+        },
+        "district": {
+          "ar": "ويست تاون سوديك (Westown)",
+          "en": "Westown Sodic"
+        },
+        "country": {
+          "ar": "مصر",
+          "en": "Egypt"
+        },
+        "address": {
+          "ar": "سوديك ويست، الشيخ زايد",
+          "en": "Sodic West, Sheikh Zayed"
+        }
+      },
+      "specs": {
+        "bedrooms": 3,
+        "bathrooms": 4,
+        "area_sqm": 310,
+        "area_sqft": 3336,
+        "floors": 3
+      },
+      "amenities": [
+        "private_garden",
+        "security_24_7",
+        "clubhouse",
+        "smart_home"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=85"
+      ],
+      "featured": false,
+      "badge": {
+        "ar": "إيجار عادي مميز",
+        "en": "Prime Regular Rent"
+      },
+      "created_at": "2026-02-21T11:40:00Z"
+    },
+    {
+      "id": "prop-zayed-105",
+      "title": {
+        "ar": "قصر ملكي خاص بحمام سباحة - كمبوند الكرمة 4",
+        "en": "Royal Private Palace Estate - Karma 4 Sheikh Zayed"
+      },
+      "description": {
+        "ar": "قصر سكني ملكي في كمبوند الكرمة 4 بالشيخ زايد بتصميم معماري كلاسيكي فخم. يضم مسبحاً كبيراً، مبنى ضيافة ملحق، حديقة استوائية، سينما خاصة، ومصعد داخلي يربط جميع الطوابق.",
+        "en": "A majestic private palace in Karma 4, Sheikh Zayed with neoclassical luxury architecture. Features large swimming pool, guest pavilion, tropical garden, private cinema, and internal elevator."
+      },
+      "type": "mansion",
+      "status": "for-sale",
+      "price": 75000000,
+      "currency": "EGP",
+      "location": {
+        "city": {
+          "ar": "مدينة الشيخ زايد",
+          "en": "Sheikh Zayed City"
+        },
+        "district": {
+          "ar": "كمبوند الكرمة (Karma 4)",
+          "en": "Karma 4 Zayed"
+        },
+        "country": {
+          "ar": "مصر",
+          "en": "Egypt"
+        },
+        "address": {
+          "ar": "منطقة القصور، الكرمة 4، الشيخ زايد",
+          "en": "Palaces Area, Karma 4, Sheikh Zayed"
+        }
+      },
+      "specs": {
+        "bedrooms": 7,
+        "bathrooms": 9,
+        "area_sqm": 1250,
+        "area_sqft": 13454,
+        "floors": 3
+      },
+      "amenities": [
+        "private_pool",
+        "private_garden",
+        "smart_home",
+        "private_elevator",
+        "home_cinema",
+        "spa_gym",
+        "security_24_7",
+        "driver_room"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1600585154363-67eb9e2e2099?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1600607687644-c7171b42498b?auto=format&fit=crop&w=1600&q=85"
+      ],
+      "featured": true,
+      "badge": {
+        "ar": "قصر ملكي حصري",
+        "en": "Exclusive Palace"
+      },
+      "created_at": "2026-02-22T16:20:00Z"
+    },
+    {
+      "id": "prop-zayed-106",
+      "title": {
+        "ar": "شقة فاخرة مفروشة بالكامل - كمبوند بالم هيلز زايد",
+        "en": "Luxury Furnished Residence - Palm Hills Zayed"
+      },
+      "description": {
+        "ar": "شقة سكنية أنيقة مفروشة بالكامل وجاهزة للسكن الفوري في قلب بالم هيلز الشيخ زايد (Palm Hills). إطلالة مفتوحة على المساحات الخضراء والبحيرات، بتشطيب ألترا مودرن وأجهزة حديثة.",
+        "en": "An elegant turnkey furnished apartment in the heart of Palm Hills Sheikh Zayed. Unobstructed views of open greenery and water lakes with ultra-modern decor and premium appliances."
+      },
+      "type": "apartment",
+      "status": "furnished-rent",
+      "price": 65000,
+      "currency": "EGP",
+      "location": {
+        "city": {
+          "ar": "مدينة الشيخ زايد",
+          "en": "Sheikh Zayed City"
+        },
+        "district": {
+          "ar": "بالم هيلز زايد (Palm Hills)",
+          "en": "Palm Hills Zayed"
+        },
+        "country": {
+          "ar": "مصر",
+          "en": "Egypt"
+        },
+        "address": {
+          "ar": "بالم هيلز، الشيخ زايد",
+          "en": "Palm Hills, Sheikh Zayed"
+        }
+      },
+      "specs": {
+        "bedrooms": 3,
+        "bathrooms": 3,
+        "area_sqm": 220,
+        "area_sqft": 2368,
+        "floors": 1
+      },
+      "amenities": [
+        "smart_home",
+        "concierge_service",
+        "security_24_7",
+        "clubhouse"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1600&q=85"
+      ],
+      "featured": false,
+      "badge": {
+        "ar": "مفروش وجاهز للسكن",
+        "en": "Furnished Ready"
+      },
+      "created_at": "2026-02-23T13:00:00Z"
+    },
+    {
+      "id": "prop-zayed-107",
+      "title": {
+        "ar": "توين هاوس مودرن للبيع - كمبوند بيل في إعمار مصر",
+        "en": "Modern Twin House for Sale - Belle Vie Emaar Zayed"
+      },
+      "description": {
+        "ar": "توين هاوس مميز في أحدث مشاريع إعمار مصر بالشيخ زايد (Belle Vie). تصميم معاصر يضمن أقصى درجات الخصوصية مع واجهات زجاجية واسعة وحديقة رحبة.",
+        "en": "Stunning modern twin house in Emaar's prestigious Belle Vie in Sheikh Zayed. Contemporary design ensuring privacy with expansive glass facades and private garden."
+      },
+      "type": "townhouse",
+      "status": "for-sale",
+      "price": 24500000,
+      "currency": "EGP",
+      "location": {
+        "city": {
+          "ar": "مدينة الشيخ زايد",
+          "en": "Sheikh Zayed City"
+        },
+        "district": {
+          "ar": "بيل في إعمار (Belle Vie)",
+          "en": "Belle Vie Emaar"
+        },
+        "country": {
+          "ar": "مصر",
+          "en": "Egypt"
+        },
+        "address": {
+          "ar": "محور الضبعة، الشيخ زايد الجديدة",
+          "en": "Dabaa Axis, New Zayed"
+        }
+      },
+      "specs": {
+        "bedrooms": 4,
+        "bathrooms": 5,
+        "area_sqm": 360,
+        "area_sqft": 3875,
+        "floors": 3
+      },
+      "amenities": [
+        "private_garden",
+        "smart_home",
+        "clubhouse",
+        "security_24_7"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=85"
+      ],
+      "featured": true,
+      "badge": {
+        "ar": "مشروع إعمار مصر",
+        "en": "Emaar Belle Vie"
+      },
+      "created_at": "2026-02-24T08:00:00Z"
+    },
+    {
+      "id": "prop-zayed-108",
+      "title": {
+        "ar": "دوبلكس أرضي بحديقة خاصة - كمبوند رويال سيتي زايد",
+        "en": "Garden Duplex with Private Pool - Royal City Zayed"
+      },
+      "description": {
+        "ar": "دوبلكس أرضي فاخر ملحق بحديقة خاصة بمساحة 180م² وحمام سباحة خاص في كمبوند رويال سيتي أمام هايبر وان مباشرة بالشيخ زايد.",
+        "en": "Prime ground duplex featuring private 180 sqm garden and private pool in Royal City, directly facing Hyper One in Sheikh Zayed."
+      },
+      "type": "duplex",
+      "status": "for-sale",
+      "price": 16800000,
+      "currency": "EGP",
+      "location": {
+        "city": {
+          "ar": "مدينة الشيخ زايد",
+          "en": "Sheikh Zayed City"
+        },
+        "district": {
+          "ar": "رويال سيتي (Royal City)",
+          "en": "Royal City Zayed"
+        },
+        "country": {
+          "ar": "مصر",
+          "en": "Egypt"
+        },
+        "address": {
+          "ar": "طريق مصر الإسكندرية الصحراوي، الشيخ زايد",
+          "en": "Cairo-Alex Road, Sheikh Zayed"
+        }
+      },
+      "specs": {
+        "bedrooms": 4,
+        "bathrooms": 4,
+        "area_sqm": 380,
+        "area_sqft": 4090,
+        "floors": 2
+      },
+      "amenities": [
+        "private_pool",
+        "private_garden",
+        "smart_home",
+        "security_24_7"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1600&q=85"
+      ],
+      "featured": false,
+      "badge": {
+        "ar": "حديقة خاصة",
+        "en": "Private Garden"
+      },
+      "created_at": "2026-02-25T15:10:00Z"
+    }
+  ],
+  "viewings": [
+    {
+      "id": "view-501",
+      "property_id": "prop-zayed-101",
+      "property_title": {
+        "ar": "فيلا مستقلة فاخرة - كمبوند أليجريا الشيخ زايد",
+        "en": "Signature Standalone Villa - Allegria Golf Sheikh Zayed"
+      },
+      "client_name": "المهندس شريف الدالي",
+      "client_phone": "+20 100 123 4567",
+      "client_email": "sherif.daly@architecture.eg",
+      "preferred_date": "2026-03-05",
+      "preferred_time": "16:00",
+      "viewing_mode": "in-person",
+      "notes": "العميل يرغب في معاينة الفيلا وإطلالة الجولف مع الاستفسار عن تفاصيل الصيانة.",
+      "status": "confirmed",
+      "created_at": "2026-02-26T11:20:00Z"
+    },
+    {
+      "id": "view-502",
+      "property_id": "prop-zayed-102",
+      "property_title": {
+        "ar": "فيلا مودرن مفروشة بالكامل - كمبوند بيفرلي هيلز",
+        "en": "Designer Furnished Modern Villa - Beverly Hills Zayed"
+      },
+      "client_name": "د. هاني القاضي",
+      "client_phone": "+20 111 888 9900",
+      "client_email": "dr.kady@medicare.eg",
+      "preferred_date": "2026-03-08",
+      "preferred_time": "18:00",
+      "viewing_mode": "in-person",
+      "notes": "طلب معاينة للإيجار المفروش السنوي لعائلة.",
+      "status": "completed",
+      "created_at": "2026-02-27T09:45:00Z",
+      "updated_at": "2026-08-27T17:16:27.465Z"
+    }
+  ],
+  "inquiries": [
+    {
+      "id": "inq-901",
+      "name": "المستشار أيمن عبدالفتاح",
+      "email": "ayman.fattah@lawfirm.eg",
+      "phone": "+20 122 777 6655",
+      "subject": "طلب فيلا مستقلة في أليجريا أو بيفرلي هيلز",
+      "message": "نبحث عن فيلا مستقلة بمساحة حديقة كبيرة في الشيخ زايد للشراء الفوري كاش.",
+      "status": "new",
+      "created_at": "2026-02-27T10:00:00Z"
+    }
+  ]
+}
